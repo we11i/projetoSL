@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPORTIVOS-SL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f0303;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .content {
+            background: linear-gradient(45deg, rgb(238,181,127), rgb(139,236,255));
+            text-align: center;
+            font-size: 80px;
+            font-weight: bold;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: textAnimation 5s infinite alternate, floatEffect 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 40px rgba(0, 123, 255, 0.8);
+            margin-bottom: 30px;
+        }
+
+        /* Animação de cor do texto */
+        @keyframes textAnimation {
+            0%, 100% { color: rgba(0, 123, 255, 1); }
+            25% { color: #ff6347; }
+            50% { color: #32cd32; }
+            75% { color: #ff1493; }
+        }
+
+        /* Efeito de flutuação do texto */
+        @keyframes floatEffect {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .login {
+            width: 22rem;
+            text-align: center;
+            border-radius: 10px;
+            background-color: rgb(31, 31, 31);
+            padding: 2.5rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .login h1 {
+            font-size: 40px;
+        }
+
+        .group {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .group label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 18px;
+            pointer-events: none;
+            padding: 0 5px;
+            transition: .5s ease;
+        }
+
+        .group input {
+            width: 100%;
+            height: 45px;
+            color: white;
+            background: transparent;
+            border: 1px solid #fff;
+            outline: none;
+            font-size: 18px;
+            padding: 0 12px;
+            border-radius: 6px;
+        }
+
+        .group input:focus + label,
+        .group input:valid + label {
+            top: 5px;
+            left: 10px;
+            font-size: 14px;
+            background-color: rgb(31, 31, 31);
+            padding: 0 5px;
+        }
+
+        .conform {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            height: 45px;
+            border: none;
+            background-color: red;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        .login form a {
+            color: white;
+        }
+
+        .login form button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 8px;
+            background-color: #fff;
+            border: none;
+            font-size: large;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login form p {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        @property --angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .login::after, .login::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(from var(--angle),
+                #5c21a0 0deg 60deg,
+                #0ecf0e 60deg 120deg,
+                #ff1414 120deg 180deg,
+                #4759ff 180deg 240deg,
+                #cd328c 240deg 300deg,
+                #ff1493 300deg 360deg);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            padding: 7px;
+            border-radius: 15px;
+            animation: rotateGradient 6s linear infinite;
+        }
+
+        .login::before {
+            filter: blur(2rem);
+            opacity: 0.7;
+        }
+
+        @keyframes rotateGradient {
+            from {
+                --angle: 0deg;
+            }
+            to {
+                --angle: 360deg;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">ESPORTIVOS SL</div>
+
+    <div class="login">
+        <form action="#" method="POST">
+            <h1>Sign in</h1>
+            <div class="group">
+                <input type="text" id="uname" name="uname" required>
+                <label for="uname">Username</label>
+            </div>
+            <div class="group">
+                <input type="password" id="pwd" name="pwd" required>
+                <label for="pwd">Password</label>
+            </div>
+            <button type="button" onclick="startRedirect()">Sign in</button>
+        </form>
+    </div>
+    <div id="loadingContainer" class="loading-container">
+    <script>
+        function startRedirect() {
+            // Exibe a mensagem de carregamento
+            document.getElementById('loadingContainer').style.display = 'block';
+
+            // Define o tempo de atraso antes de redirecionar (exemplo: 3 segundos)
+            setTimeout(function() {
+                // Redireciona o usuário após o tempo de carregamento
+                window.location.href = 'esportivossl.html';
+            }, 3000); // 3000 milissegundos = 3 segundos
+        }
+    </script>
+
+</body>
+</html>
+  
