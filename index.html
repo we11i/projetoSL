@@ -1,218 +1,329 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESPORTIVOS-SL</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f0303;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESPORTIVOS-SL</title>
 
-        .content {
-            background: linear-gradient(45deg, rgb(238,181,127), rgb(139,236,255));
-            text-align: center;
-            font-size: 80px;
-            font-weight: bold;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: textAnimation 5s infinite alternate, floatEffect 3s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 40px rgba(0, 123, 255, 0.8);
-            margin-bottom: 30px;
-        }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        /* Animação de cor do texto */
-        @keyframes textAnimation {
-            0%, 100% { color: rgba(0, 123, 255, 1); }
-            25% { color: #ff6347; }
-            50% { color: #32cd32; }
-            75% { color: #ff1493; }
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Efeito de flutuação do texto */
-        @keyframes floatEffect {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+    }
 
-        .login {
-            width: 22rem;
-            text-align: center;
-            border-radius: 10px;
-            background-color: rgb(31, 31, 31);
-            padding: 2.5rem;
-            color: #fff;
-            position: relative;
-        }
+    img {
+      width: 100%;
+      display: block;
+    }
 
-        .login h1 {
-            font-size: 40px;
-        }
+    a {
+      text-decoration: none;
+      color: white;
+    }
 
-        .group {
-            position: relative;
-            margin: 1.5rem 0;
-        }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .group label {
-            position: absolute;
-            top: 50%;
-            left: 15px;
-            transform: translateY(-50%);
-            color: #fff;
-            font-size: 18px;
-            pointer-events: none;
-            padding: 0 5px;
-            transition: .5s ease;
-        }
+    .navbar {
+      background-color: #111 !important;
+      border-bottom: 1px solid #333;
+      padding: 15px 0;
+    }
 
-        .group input {
-            width: 100%;
-            height: 45px;
-            color: white;
-            background: transparent;
-            border: 1px solid #fff;
-            outline: none;
-            font-size: 18px;
-            padding: 0 12px;
-            border-radius: 6px;
-        }
+    .navbar-brand {
+      font-size: 24px;
+    }
 
-        .group input:focus + label,
-        .group input:valid + label {
-            top: 5px;
-            left: 10px;
-            font-size: 14px;
-            background-color: rgb(31, 31, 31);
-            padding: 0 5px;
-        }
+    .nav-link {
+      color: #ccc !important;
+      font-size: 14px;
+    }
 
-        .conform {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
+    .nav-link:hover {
+      color: #fff !important;
+    }
 
-        button {
-            width: 100%;
-            height: 45px;
-            border: none;
-            background-color: red;
-            color: rgb(0, 0, 0);
-            font-size: 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        button:hover {
-            background-color: darkred;
-        }
+    .form-control {
+      background-color: #111;
+      border: 1px solid #333;
+      color: white;
+      height: 40px;
+      font-size: 14px;
+      padding: 6px 12px;
+    }
 
-        .login form a {
-            color: white;
-        }
+    .form-control::placeholder {
+      color: #aaa;
+    }
 
-        .login form button {
-            margin-top: 15px;
-            width: 100%;
-            padding: 8px;
-            background-color: #fff;
-            border: none;
-            font-size: large;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .form-control:focus {
+      background-color: #111;
+      color: white;
+      border-color: #555;
+      box-shadow: none;
+    }
 
-        .login form p {
-            margin-top: 15px;
-            font-size: 18px;
-        }
+    .btn-outline-light {
+      border-color: #333;
+      height: 40px;
+      font-size: 14px;
+      padding: 6px 20px;
+    }
 
-        @property --angle {
-            syntax: "<angle>";
-            initial-value: 0deg;
-            inherits: false;
-        }
+    .btn-outline-light:hover {
+      background-color: #333;
+      border-color: #333;
+    }
 
-        .login::after, .login::before {
-            content: "";
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background-image: conic-gradient(from var(--angle),
-                #5c21a0 0deg 60deg,
-                #0ecf0e 60deg 120deg,
-                #ff1414 120deg 180deg,
-                #4759ff 180deg 240deg,
-                #cd328c 240deg 300deg,
-                #ff1493 300deg 360deg);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            padding: 7px;
-            border-radius: 15px;
-            animation: rotateGradient 6s linear infinite;
-        }
+    .hero {
+      padding: 50px 0;
+    }
 
-        .login::before {
-            filter: blur(2rem);
-            opacity: 0.7;
-        }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
 
-        @keyframes rotateGradient {
-            from {
-                --angle: 0deg;
-            }
-            to {
-                --angle: 360deg;
-            }
-        }
-    </style>
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+      max-width: 700px;
+      margin-bottom: 25px;
+    }
+
+    .btn-ver {
+      display: inline-block;
+      background-color: white;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .hero-image img {
+      border-radius: 12px;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .cars {
+      padding: 40px 0 60px;
+    }
+
+    .cars h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .cars p {
+      color: #ccc;
+      margin-bottom: 25px;
+    }
+
+    .cars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1b1b1b;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .card img {
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .card-text {
+      padding: 15px;
+    }
+
+    .card-text h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .card-text p {
+      color: #ccc;
+      font-size: 16px;
+    }
+
+    footer {
+      border-top: 1px solid #333;
+      padding: 20px 0;
+      text-align: center;
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .cars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
 
-    <div class="content">ESPORTIVOS SL</div>
+      <a class="navbar-brand logo" href="#">BRABOS-SL</a>
 
-    <div class="login">
-        <form action="#" method="POST">
-            <h1>Sign in</h1>
-            <div class="group">
-                <input type="text" id="uname" name="uname" required>
-                <label for="uname">Username</label>
-            </div>
-            <div class="group">
-                <input type="password" id="pwd" name="pwd" required>
-                <label for="pwd">Password</label>
-            </div>
-            <button type="button" onclick="startRedirect()">Sign in</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">INICIO</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="populares.html">POPULARES</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="mdls.html">MDLS CARS</a>
+          </li>
+        </ul>
+
+        <form class="d-flex" onsubmit="pesquisarEmOutraPagina(event)">
+          <input id="pesquisa-carro" class="form-control me-2" type="search" placeholder="Pesquisar carro...">
+          <button id="botao-buscar" class="btn btn-outline-light" type="submit">Buscar</button>
         </form>
+
+      </div>
     </div>
-    <div id="loadingContainer" class="loading-container">
-    <script>
-        function startRedirect() {
-            // Exibe a mensagem de carregamento
-            document.getElementById('loadingContainer').style.display = 'block';
+  </nav>
 
-            // Define o tempo de atraso antes de redirecionar (exemplo: 3 segundos)
-            setTimeout(function() {
-                // Redireciona o usuário após o tempo de carregamento
-                window.location.href = 'esportivossl.html';
-            }, 3000); // 3000 milissegundos = 3 segundos
-        }
-    </script>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Carros esportivos que chamam atenção</h1>
 
+        <p>
+          Do popular ao esportivo, reunimos os melhores carros para todos os estilos e momentos,
+          combinando desempenho, conforto e design.
+        </p>
+
+        <a href="#carros" class="btn-ver">Ver carros</a>
+
+        <div class="hero-image">
+          <img src="javier-ferrer-roll-royce.gif" alt="Carro em destaque">
+        </div>
+      </div>
+    </section>
+
+    <section class="cars" id="carros">
+      <div class="container">
+        <h2>Modelos em destaque</h2>
+        <p>Aqui começa o seu sonho.</p>
+
+        <div class="cars-grid">
+
+          <div class="card">
+            <img src="fiat uno.jpg" alt="Fiat Uno">
+            <div class="card-text">
+              <h3>Fiat Uno</h3>
+              <p>Compacto, econômico e muito conhecido no Brasil.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="gol.jpg" alt="Gol">
+            <div class="card-text">
+              <h3>Gol</h3>
+              <p>Um clássico popular com bom custo-benefício.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="celta.jpg" alt="Celta">
+            <div class="card-text">
+              <h3>Celta</h3>
+              <p>Pequeno, econômico e ótimo para o dia a dia.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="onix.jpg" alt="Onix">
+            <div class="card-text">
+              <h3>Onix</h3>
+              <p>Moderno, confortável e muito procurado.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 ESPORTIVOS-SL</p>
+    </div>
+  </footer>
+
+  <script>
+   function pesquisarEmOutraPagina(event) {
+  event.preventDefault();
+
+  const inputPesquisa = document.getElementById("pesquisa-carro");
+  const textoDigitado = inputPesquisa.value.toLowerCase().trim();
+
+  if (textoDigitado === "") return;
+
+  const populares = ["uno", "gol", "celta", "onix", "palio"];
+  const mdls = ["chevetão", "chevetao", "scort", "civic", "marea", "lancer"];
+
+
+  const texto = textoDigitado.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  for (let i = 0; i < populares.length; i++) {
+    if (texto.includes(populares[i])) {
+      window.location.href = "populares.html?carro=" + encodeURIComponent(textoDigitado);
+      return;
+    }
+  }
+
+  for (let i = 0; i < mdls.length; i++) {
+    if (texto.includes(mdls[i])) {
+      window.location.href = "mdls.html?carro=" + encodeURIComponent(textoDigitado);
+      return;
+    }
+  }
+
+  alert("Carro não encontrado.");
+}
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-  

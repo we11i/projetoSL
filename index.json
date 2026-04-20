@@ -1,0 +1,15 @@
+[
+  {
+    "nome": "Ford K",
+    "valor": 12000,
+    "esta_disponivel": true,
+      
+    "Detalhes_sobre_o_carro":{
+      "estado": "novo",
+      "marca": "ford",
+      "Ano": 2022,
+      "empresa": "KAKA Fuletagem"
+      },
+      "espevificações":["vermelho","chega há 160km","motor novo","120km rodados"]
+  }
+]

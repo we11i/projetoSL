@@ -1,2 +1,0 @@
-# projetoSL
-copia do tavares

@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BRABOS-SL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
-        body {
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #000;
+            color: #fff;
             font-family: Arial, sans-serif;
-            background-color: #0f0303;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         .navbar {
+            background-color: #111 !important;
+            border-bottom: 1px solid #222;
             margin-bottom: 20px;
         }
 
         .navbar-dark {
-            background-color: #0f0303;
+            background-color: #000 !important;
         }
 
         .navbar-nav {
@@ -33,14 +44,28 @@
         }
 
         .nav-link:hover {
-            color: #007bff !important;
+            color: #888 !important;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff !important;
+            margin-right: 100px;
         }
 
         .content {
-            color: white;
+            color: #fff;
             text-align: center;
             font-size: 2rem;
             margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .main-container {
+            width: 100%;
+            padding: 20px 0;
+            background-color: #000;
         }
 
         .card-wrapper {
@@ -51,88 +76,197 @@
         }
 
         .card {
-            background-color: #2c2a2a;
+            background-color: #111;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
             transition: transform 0.3s;
+            border: 1px solid #222;
         }
 
         .card:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            display: block;
         }
 
         .text-wrapper {
             padding: 15px;
-            color: #fff;
+            color: #ddd;
             text-align: center;
+        }
+
+        .text-wrapper a {
+            text-decoration: none;
         }
 
         .title {
             font-size: 1.5rem;
             margin-bottom: 10px;
             font-weight: bold;
+            color: #fff;
         }
 
         .card span {
             font-size: 1rem;
+            color: #bfbfbf;
+            display: block;
+            margin-bottom: 12px;
         }
 
         .botão {
             border-radius: 50px;
             color: #fff;
-            background-color: rgba(31, 31, 31);
+            background-color: #1f1f1f;
             padding: 10px 20px;
-            border: none;
+            border: 1px solid #333;
             font-size: 10px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             cursor: pointer;
+        }
+
+        .botão:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            background: #111;
+            color: white;
+            margin: 8% auto;
+            padding: 20px;
+            max-width: 350px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .fechar {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .fechar:hover {
+            color: #888;
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10000;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #fff;
+            border-radius: 50%;
+            animation: girar 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes girar {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand logo" href="#">BRABOS-SL</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
+
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html" onclick="startRedirect(event)">INICIO</a>
+                        <a class="nav-link" href="index.html">INICIO</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="populares.html">POPULARES</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="MDLS.html">MDLS CARS</a>
                     </li>
                 </ul>
+
+                <form class="d-flex" onsubmit="return false;">
+                    <input id="pesquisa-carro" class="form-control me-2" type="search" placeholder="Pesquisar carro...">
+                    <button id="botao-buscar" class="btn btn-outline-light" type="button">Buscar</button>
+                </form>
+
             </div>
         </div>
     </nav>
+
+    <div id="modal" class="modal">
+        <div class="modal-content" id="conteudo-modal">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+        </div>
+    </div>
 
     <div class="content">ESPORTIVOS SL</div>
 
     <div class="main-container">
         <div class="card-wrapper">
+
             <div class="card">
                 <img src="carro1.jpg" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
                         <h3 class="title">CHEVETÃO</h3>
                     </a>
-                    <span>Modelo esportivo com bodykit, com aprimoramentos para deslizar nas pistas</span>
+                    <span>Modelo esportivo com bodykit, com aprimoramentos para deslizar nas pistas,</span>
                     <br>
-                    <button class="botão">COMPRE AGORA</button>
+                    <button class="botão" onclick="mostrarDetalhes('CHEVETÃO', 'R$ 60.000,00', 'Novo', 2023, 'Chevrolet', 'Chevette')">COMPRE AGORA</button>
                 </div>
             </div>
+
             <div class="card">
                 <img src="carro2.jpg" alt="image">
                 <div class="text-wrapper">
@@ -141,9 +275,10 @@
                     </a>
                     <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga sint nam perferendis.</span>
                     <br>
-                    <button class="botão">COMPRE AGORA</button>
+                    <button class="botão" onclick="mostrarDetalhes('SCORT', 'R$ 70.000,00', 'Novo', 2023, 'Chevrolet', 'Sorento')">COMPRE AGORA</button>
                 </div>
             </div>
+
             <div class="card">
                 <img src="carro3.webp" alt="image">
                 <div class="text-wrapper">
@@ -152,9 +287,10 @@
                     </a>
                     <span>pra pegar mina em baile</span>
                     <br>
-                    <button class="botão">COMPRE AGORA</button>
+                    <button class="botão" onclick="mostrarDetalhes('Civic BOLADÃO', 'R$ 60.000,00', 'Novo', 2023, 'Honda', 'Civic')">COMPRE AGORA</button>
                 </div>
             </div>
+
             <div class="card">
                 <img src="carro4.jpg" alt="image">
                 <div class="text-wrapper">
@@ -163,9 +299,10 @@
                     </a>
                     <span>Marea bomba, é a mesma bosta com bodykit, para os apaixonados em carros esportivos e bombas</span>
                     <br>
-                    <button class="botão">VER CARRO</button>
+                    <button class="botão" onclick="mostrarDetalhes('Fiat Marea', 'R$ 50.000,00', 'Novo', 2023, 'Fiat', 'Marea')">VER CARRO</button>
                 </div>
             </div>
+
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1619250556999-38af9033f9d4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image">
                 <div class="text-wrapper">
@@ -173,41 +310,116 @@
                         <h3 class="title">???</h3>
                     </a>
                     <span>NOVIDADE NO MERCADO</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="card ev">
-                 <img src="lancer evolution.jpg" alt="image">
-                  <div class="text-wrapper">
-                    <a href="#">
-                    <h3 class="title"> Lancer evolution</h3>
-                    <a>
-                    <span>carro brabo do capeta,anda igual homem fugindo da 
-                    mulher quando vai pro bar escondido </span>
-                    </a>
+                    <br>
+                    <button class="botão" onclick="mostrarDetalhes('???', 'R$ 100.000,00', 'Novo', 2023, '???', '???')">COMPRE AGORA</button>
                 </div>
             </div>
+
+            <div class="card">
+                <img src="lancer evolution.jpg" alt="image">
+                <div class="text-wrapper">
+                    <a href="#">
+                        <h3 class="title">Lancer evolution</h3>
+                    </a>
+                    <span>carro brabo do capeta,anda igual homem fugindo da mulher quando vai pro bar escondido</span>
+                    <br>
+                    <button class="botão" onclick="mostrarDetalhes('Lancer Evolution', 'R$ 80.000,00', 'Novo', 2023, 'Mitsubishi', 'Lancer Evolution')">COMPRE AGORA</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div id="loadingContainer" style="display: none; color: white; text-align: center; margin-top: 20px;">
-        Carregando, por favor aguarde...
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <span>Carregando...</span>
     </div>
 
     <script>
-        function startRedirect(event) {
-            // Previne o comportamento padrão do link
-            event.preventDefault();
-            
-            // Exibe a mensagem de carregamento
-            document.getElementById('loadingContainer').style.display = 'block';
-            
-            // Define o tempo de atraso antes de redirecionar (exemplo: 3 segundos)
-            setTimeout(function() {
-                // Redireciona o usuário após o tempo de carregamento
-                window.location.href = 'esportivos.html';
-            }, 3000); // 3000 milissegundos = 3 segundos
+        function mostrarDetalhes(nome, valor, estado, ano, marca, modelo) {
+            mostrarLoading();
+
+            setTimeout(function () {
+                esconderLoading();
+
+                const conteudoModal = document.getElementById('conteudo-modal');
+
+                conteudoModal.innerHTML = `
+                    <span class="fechar" onclick="fecharModal()">&times;</span>
+                    <h2>${nome}</h2>
+                    <p>Valor: ${valor}</p>
+                    <p>Estado: ${estado}</p>
+                    <p>Ano: ${ano}</p>
+                    <p>Marca: ${marca}</p>
+                    <p>Modelo: ${modelo}</p>
+                    <button class="botão" onclick="fecharModal()">Fechar</button>
+                `;
+
+                document.getElementById('modal').style.display = 'block';
+            }, 1500);
         }
+
+        function fecharModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function mostrarLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+
+        function esconderLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+
+            if (event.target === modal) {
+                fecharModal();
+            }
+        };
+
+        const pesquisaInput = document.getElementById('pesquisa-carro');
+        const botaoBuscar = document.getElementById('botao-buscar');
+        const cards = document.querySelectorAll('.card');
+
+        function filtrarCarros() {
+            const textoDigitado = pesquisaInput.value.toLowerCase().trim();
+
+            cards.forEach(function(card) {
+                const nomeCarro = card.querySelector('.title').textContent.toLowerCase();
+
+                if (nomeCarro.includes(textoDigitado)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function pegarCarroDaURL() {
+            const parametros = new URLSearchParams(window.location.search);
+            const carro = parametros.get('carro');
+
+            if (carro) {
+                pesquisaInput.value = carro;
+                filtrarCarros();
+            }
+        }
+
+        function pesquisarEmOutraPagina(event) {
+      event.preventDefault();
+
+      const inputPesquisa = document.getElementById("pesquisa-carro");
+      const textoDigitado = inputPesquisa.value.trim();
+
+      if (textoDigitado !== "") {
+
+        window.location.href = "MDLS.html?carro=" + encodeURIComponent(textoDigitado);
+      } else {
+        window.location.href = "populares.html";
+      }
+    }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
