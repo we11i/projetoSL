@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BRABOS-SL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/mdls.css">
 
-    <style>
+    <!-- <style>
         html, body {
             margin: 0;
             padding: 0;
@@ -52,6 +53,7 @@
             font-weight: bold;
             color: #fff !important;
             margin-right: 100px;
+            
         }
 
         .content {
@@ -205,7 +207,7 @@
                 transform: rotate(360deg);
             }
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -235,9 +237,9 @@
                     </li>
                 </ul>
 
-                <form class="d-flex" onsubmit="return false;">
+                <form class="d-flex" onsubmit="search(event)">
                     <input id="pesquisa-carro" class="form-control me-2" type="search" placeholder="Pesquisar carro...">
-                    <button id="botao-buscar" class="btn btn-outline-light" type="button">Buscar</button>
+                    <button id="botao-buscar" class="btn btn-outline-light" type="submit">Buscar</button>
                 </form>
 
             </div>
@@ -256,7 +258,8 @@
         <div class="card-wrapper">
 
             <div class="card">
-                <img src="carro1.jpg" alt="image">
+                <!-- <img src="carro1.jpg" alt="image"> -->
+                <img src="../img/carro1.jpg" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
                         <h3 class="title">CHEVETÃO</h3>
@@ -268,7 +271,8 @@
             </div>
 
             <div class="card">
-                <img src="carro2.jpg" alt="image">
+                <!-- <img src="carro2.jpg" alt="image"> -->
+                <img src="../img/carro2.jpg" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
                         <h3 class="title">SCORT</h3>
@@ -280,7 +284,8 @@
             </div>
 
             <div class="card">
-                <img src="carro3.webp" alt="image">
+                <!-- <img src="carro3.webp" alt="image"> -->
+                <img src="../img/carro3.webp" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
                         <h3 class="title">CIVIC BOLADÃO</h3>
@@ -292,7 +297,8 @@
             </div>
 
             <div class="card">
-                <img src="carro4.jpg" alt="image">
+                <!-- <img src="carro4.jpg" alt="image"> -->
+                <img src="../img/carro4.jpg" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
                         <h3 class="title">Fiat Marea</h3>
@@ -304,19 +310,21 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1619250556999-38af9033f9d4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image">
+                <!-- <img src="a12ca2ae3fe29572dd0db2ca5b36d940.jpg" alt="image"> -->
+                <img src="../img/a12ca2ae3fe29572dd0db2ca5b36d940.jpg" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
-                        <h3 class="title">???</h3>
+                        <h3 class="title">Golf Brabo</h3>
                     </a>
                     <span>NOVIDADE NO MERCADO</span>
                     <br>
-                    <button class="botão" onclick="mostrarDetalhes('???', 'R$ 100.000,00', 'Novo', 2023, '???', '???')">COMPRE AGORA</button>
+                    <button class="botão" onclick="mostrarDetalhes('Golf Brabo', 'R$ 100.000,00', 'Novo', 2023, 'Volkswagen', 'Golf')">COMPRE AGORA</button>
                 </div>
             </div>
 
             <div class="card">
-                <img src="lancer evolution.jpg" alt="image">
+                <!-- <img src="lancer evolution.jpg" alt="image"> -->
+                <img src="../img/lancer evolution.jpg" alt="image">
                 <div class="text-wrapper">
                     <a href="#">
                         <h3 class="title">Lancer evolution</h3>
@@ -326,7 +334,6 @@
                     <button class="botão" onclick="mostrarDetalhes('Lancer Evolution', 'R$ 80.000,00', 'Novo', 2023, 'Mitsubishi', 'Lancer Evolution')">COMPRE AGORA</button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -334,6 +341,18 @@
         <div class="spinner"></div>
         <span>Carregando...</span>
     </div>
+    
+    <!-- <script>
+        let carros =JSON.parse(localStorage.getItem('carros')) || [
+        ({nome: "Civic", preco: 60000, estado: "Novo", ano: 2023, marca: "Honda", modelo: "Civic"}),
+        ({nome: "Chevetão", preco: 60000, estado: "Novo", ano: 2023, marca: "Chevrolet", modelo: "Chevette"}),
+        ({nome: "Scort", preco: 70000, estado: "Novo", ano: 2023, marca: "Chevrolet", modelo: "Sorento"}),
+        ({nome: "Fiat Marea", preco: 50000, estado: "Novo", ano: 2023, marca: "Fiat", modelo: "Marea"}),
+        ({nome: "Golf Brabo", preco: 100000, estado: "Novo", ano: 2023, marca: "Volkswagen", modelo: "Golf"}),
+        ({nome: "Lancer Evolution", preco: 80000, estado: "Novo", ano: 2023, marca: "Mitsubishi", modelo: "Lancer Evolution"})
+        ];
+
+    </script>
 
     <script>
         function mostrarDetalhes(nome, valor, estado, ano, marca, modelo) {
@@ -383,6 +402,7 @@
         const botaoBuscar = document.getElementById('botao-buscar');
         const cards = document.querySelectorAll('.card');
 
+        /*
         function filtrarCarros() {
             const textoDigitado = pesquisaInput.value.toLowerCase().trim();
 
@@ -396,6 +416,7 @@
                 }
             });
         }
+        */
 
         function pegarCarroDaURL() {
             const parametros = new URLSearchParams(window.location.search);
@@ -407,21 +428,59 @@
             }
         }
 
+        /*
         function pesquisarEmOutraPagina(event) {
-      event.preventDefault();
+            event.preventDefault();
 
-      const inputPesquisa = document.getElementById("pesquisa-carro");
-      const textoDigitado = inputPesquisa.value.trim();
+            const inputPesquisa = document.getElementById("pesquisa-carro");
+            const textoDigitado = inputPesquisa.value.trim();
 
-      if (textoDigitado !== "") {
+            if (textoDigitado !== "") {
+                window.location.href = "MDLS.html?carro=" + encodeURIComponent(textoDigitado);
+            } else {
+                window.location.href = "populares.html";
+            }
+        }
+        */
 
-        window.location.href = "MDLS.html?carro=" + encodeURIComponent(textoDigitado);
-      } else {
-        window.location.href = "populares.html";
-      }
-    }
-    </script>
+        function search(event){
+            event.preventDefault();
 
+            if(event){
+                event.preventDefault();
+            }
+
+            const searchQuery = document.getElementById('pesquisa-carro');
+            const textLowCase = searchQuery.value.toLowerCase().trim();
+            
+            if(textLowCase == ''){
+                cards.forEach((card) => {
+                    card.style.display = 'block';
+                });
+                return;
+            }
+
+            let inPage = false;
+
+            cards.forEach((card) => {
+                const nameCar = card.querySelector('.title').textContent.toLowerCase().trim();
+
+                if(nameCar.includes(textLowCase)){
+                    card.style.display = 'block';
+                    inPage = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if(inPage !== true){
+                window.location.href = 'populares.html' + '?carro=' + encodeURIComponent(textLowCase);
+                return;
+            }
+        }
+    </script> -->
+
+    <script src="../js/mdls.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

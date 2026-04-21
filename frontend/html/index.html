@@ -6,8 +6,9 @@
   <title>ESPORTIVOS-SL</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
+  <link rel="stylesheet" href="../css/index.css">
+  
+  <!-- <style>
     * {
       margin: 0;
       padding: 0;
@@ -186,7 +187,7 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
+  </style> -->
 </head>
 
 <body>
@@ -237,7 +238,7 @@
         <a href="#carros" class="btn-ver">Ver carros</a>
 
         <div class="hero-image">
-          <img src="javier-ferrer-roll-royce.gif" alt="Carro em destaque">
+          <img src="../img/javier-ferrer-roll-royce.gif" alt="Carro em destaque">
         </div>
       </div>
     </section>
@@ -250,23 +251,26 @@
         <div class="cars-grid">
 
           <div class="card">
-            <img src="tenor.gif" alt="Fiat Uno">
+            <!-- <img src="tenor.gif" alt="Fiat Uno"> -->
+            <img src="../img/tenor.gif" alt="Fiat Uno">
             <div class="card-text">
-              <h3>Fiat Uno</h3>
-              <p>Compacto, econômico e muito conhecido no Brasil.</p>
+              <h3>Sonhar não custa nada,mas tomar uma atitude custa e vale a pena </h3>
+              <p>Não é só um carro — é o som da potência, a força da liberdade e a prova de que você não nasceu pra andar devagar...</p>
             </div>
           </div>
 
           <div class="card">
-            <img src="macacofudido.webp" alt="Gol">
+            <!-- <img src="macacofudido.webp" alt="Gol"> -->
+            <img src="../img/macacofudido.webp" alt="Gol">
             <div class="card-text">
-              <h3>Gol</h3>
-              <p>Um clássico popular com bom custo-benefício.</p>
+              <h3>Não são tempos de andar a pé, ta na hora de adiquirir o seu veiculo</h3>
+              <p>Não é sobre chegar — é sobre dominar o caminho, sentir o motor rugir e provar que você nasceu pra liderar, não pra seguir.</p>
             </div>
           </div>
         </div>
       </div>
-    </section>s
+    </section> 
+
   </main>
 
   <footer>
@@ -275,38 +279,40 @@
     </div>
   </footer>
 
-  <script>
+  <!-- <script>
   function pesquisarEmOutraPagina(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const inputPesquisa = document.getElementById("pesquisa-carro");
-  const textoDigitado = inputPesquisa.value.toLowerCase().trim();
+    const inputPesquisa = document.getElementById("pesquisa-carro");
+    const textoDigitado = inputPesquisa.value.toLowerCase().trim();
 
-  if (textoDigitado === "") return;
+    if (textoDigitado === "") return;
 
-  const populares = ["uno", "gol", "celta", "onix", "palio"];
-  const mdls = ["chevetão", "chevetao", "scort", "civic", "marea", "lancer"];
+    const populares = ["uno", "gol", "celta", "onix", "palio"];
+    const mdls = ["chevetão", "chevetao", "scort", "civic", "marea", "lancer"];
 
+    const texto = textoDigitado.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-  const texto = textoDigitado.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  for (let i = 0; i < populares.length; i++) {
-    if (texto.includes(populares[i])) {
-      window.location.href = "populares.html?carro=" + encodeURIComponent(textoDigitado);
-      return;
+    for (let i = 0; i < populares.length; i++) {
+      if (texto.includes(populares[i])) {
+        window.location.href = "populares.html?carro=" + encodeURIComponent(textoDigitado);
+        return;
+      }
     }
-  }
 
-  for (let i = 0; i < mdls.length; i++) {
-    if (texto.includes(mdls[i])) {
-      window.location.href = "mdls.html?carro=" + encodeURIComponent(textoDigitado);
-      return;
+    for (let i = 0; i < mdls.length; i++) {
+      if (texto.includes(mdls[i])) {
+        window.location.href = "mdls.html?carro=" + encodeURIComponent(textoDigitado);
+        return;
+      }
     }
+
+    alert("Carro não encontrado.");
   }
+  </script> -->
 
-  alert("Carro não encontrado.");
-}
-  </script>
-
+  
+  <script src="../js/index.js" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

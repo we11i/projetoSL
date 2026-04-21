@@ -11,5 +11,10 @@
       "empresa": "KAKA Fuletagem"
       },
       "espevificações":["vermelho","chega há 160km","motor novo","120km rodados"]
-  }
+  },
+
+  {
+  "nome": "Civic",
+  "preco": 60000
+}
 ]
