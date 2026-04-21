@@ -4,6 +4,11 @@ function pesquisarEmOutraPagina(event) {
     const inputPesquisa = document.getElementById("pesquisa-carro");
     const textoDigitado = inputPesquisa.value.toLowerCase().trim();
 
+    const paginas = [
+        "../html/populares.html",
+        "../html/MDLS.html"
+    ];
+
     if (textoDigitado === "") return;
 
     const populares = ["uno", "gol", "celta", "onix", "palio"];
@@ -13,14 +18,14 @@ function pesquisarEmOutraPagina(event) {
 
     for (let i = 0; i < populares.length; i++) {
         if (texto.includes(populares[i])) {
-        window.location.href = "populares.html?carro=" + encodeURIComponent(textoDigitado);
+        window.location.href = paginas[0] + "?carro=" + encodeURIComponent(textoDigitado);
         return;
         }
     }
 
     for (let i = 0; i < mdls.length; i++) {
         if (texto.includes(mdls[i])) {
-        window.location.href = "mdls.html?carro=" + encodeURIComponent(textoDigitado);
+        window.location.href = paginas[1] + "?carro=" + encodeURIComponent(textoDigitado);
         return;
         }
     }

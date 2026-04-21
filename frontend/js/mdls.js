@@ -54,6 +54,10 @@ let pesquisaInput = document.getElementById('pesquisa-carro');
 const botaoBuscar = document.getElementById('botao-buscar');
 const cards = document.querySelectorAll('.card');
 
+const paginas = [
+    "../html/populares.html"
+];
+
 
 function filtrarCarros() {
     const textoDigitado = pesquisaInput.value.toLowerCase().trim();
@@ -126,7 +130,9 @@ function search(event){
     });
 
     if(inPage !== true){
-        window.location.href = 'populares.html' + '?carro=' + encodeURIComponent(textLowCase);
+        window.location.href = paginas[0] + '?carro=' + encodeURIComponent(textLowCase);
         return;
     }
 }
+
+pegarCarroDaURL();

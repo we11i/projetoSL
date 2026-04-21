@@ -45,6 +45,10 @@ const pesquisaInput = document.getElementById('pesquisa-carro');
 const botaoBuscar = document.getElementById('botao-buscar');
 const cards = document.querySelectorAll('.card');
 
+const paginas = [
+    "../html/MDLS.html"
+]
+
 const formBusca = document.getElementById('form-busca');
 
 function searchCar(event) {
@@ -81,7 +85,7 @@ function searchCar(event) {
 
     //  redireciona se o 'texto digitado' não foi encontrado nos cards
     if(encontrouNaPagina !== true){
-        window.location.href = "MDLS.html" + "?carro=" + encodeURIComponent(textoDigitado);
+        window.location.href = paginas[0] + "?carro=" + encodeURIComponent(textoDigitado);
         return;
     }
 }
@@ -97,7 +101,7 @@ function pegarCarroDaURL() {
 }
 
 
-pesquisaInput.addEventListener("keyup", searchCar);
+// pesquisaInput.addEventListener("keyup", searchCar);
 botaoBuscar.addEventListener("click", searchCar);
 
 pegarCarroDaURL();

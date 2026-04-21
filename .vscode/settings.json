@@ -1,0 +1,19 @@
+{
+    "material-icon-theme.activeIconPack": "react_redux",
+    // "material-icon-theme.activeIconPack": "react",
+    // "material-icon-theme.activeIconPack": "angular",
+    // "material-icon-theme.activeIconPack": "angular_ngrx",
+    // "material-icon-theme.activeIconPack": "vue",
+    // "material-icon-theme.activeIconPack": "vue_vuex",
+    // "material-icon-theme.activeIconPack": "nest",
+
+    "material-icon-theme.folders.associations": {
+        "src": "folder",
+        "public": "folder-public",
+        "server": "folder-server",
+        "api": "folder-api",
+        "node_modules": "folder-node",
+        "backend": "folder-server",
+        "frontend": "folder-client"
+    }
+}
