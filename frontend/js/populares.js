@@ -101,7 +101,7 @@ function pegarCarroDaURL() {
 }
 
 
-// pesquisaInput.addEventListener("keyup", searchCar);
+pesquisaInput.addEventListener("keyup", searchCar);
 botaoBuscar.addEventListener("click", searchCar);
 
 pegarCarroDaURL();
